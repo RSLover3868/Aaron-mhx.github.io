@@ -1,0 +1,263 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>N107 信息编码表示 | Gridea</title>
+<link rel="shortcut icon" href="https://aaron-mhx.github.io/favicon.ico?v=1592122746335">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://aaron-mhx.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="N107 信息编码表示 | Gridea - Atom Feed" href="https://aaron-mhx.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="一、基本概念
+编码
+计算机要处理的数据除了数值数据以外，还有各类符号、图形、图像和声音等非数值数据。而计算机只能识别两个数字0,1。要使计算机能处理这些信息，首先必须要将各类信息转换成0与1表示的代码，这一过程称为编码。
+数据
+能被计算机接..." />
+    <meta name="keywords" content="N knowledge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://aaron-mhx.github.io">
+  <img class="avatar" src="https://aaron-mhx.github.io/images/avatar.png?v=1592122746335" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              N107 信息编码表示
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-29
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://aaron-mhx.github.io/tag/6mP9DGMhkp/" class="post-tag">
+                  # N knowledge
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="一-基本概念">一、基本概念</h1>
+<h2 id="编码">编码</h2>
+<p>计算机要处理的数据除了数值数据以外，还有各类符号、图形、图像和声音等非数值数据。而计算机只能识别两个数字0,1。要使计算机能处理这些信息，首先必须要将各类信息转换成0与1表示的代码，这一过程称为编码。</p>
+<h2 id="数据">数据</h2>
+<p>能被计算机接受和处理的符号的集合都称为数据。</p>
+<h2 id="比特">比特</h2>
+<p>比特(Bit ——二进制位数)是指1位二进制的数码（即0或1）.比特是计算机中表示信息的数据编码中的最小单位。</p>
+<h2 id="字节">字节</h2>
+<p>字节表示被处理的一组连续的二进制数字。通常用8位二进制数字表示一个字节，即一个字节有8个比特组成。</p>
+<p>字节是存储系统的最小存取单位。</p>
+<h1 id="字符的表示">字符的表示</h1>
+<p>字符是人与计算机交互过程中不可缺少的重要信息。要是计算机能处理、存储字符信息，首先必须用二进制0和1代码对字符进行编码。</p>
+<h1 id="ascii编码">ASCII编码</h1>
+<p>ASCII编码是由美国国家标准委员会制定的一种包括数字、字母、通用符号和控制符号在内的字符编码集，全称位美国国家信息交换标准代码（American Standard Code for Information Interchange）。AscII 码是一种7位二进制编码，能表示2^7=128种国际上最通用的西文字符，是目前计算机中，特别是微型计算机中使用最普遍的字符编码集。</p>
+<p>ASCII编码包括4类最常用的字符。</p>
+<ol>
+<li>数字“0”~“9”.ASCII编码的值分别为0110000B~0111001B,对应十六进制数为30H~39H。</li>
+<li>26个英文字母。大写字母&quot;A&quot;~&quot;Z&quot;的ASCII编码值为41H~5AH,小写字母&quot;a&quot;~“z”的ASCII编码值为61H~7AH。</li>
+<li>通用符号。如“+”“-”“=”“*”和“/”等共32个。</li>
+<li>控制符号。如空格符和回车符等共34个。</li>
+</ol>
+<p>ASCII码是一种7位编码，它存储时必须占全一个字节，也即占用8位：b7、b6、b5、b4、b3、b2、b1、b0，其中b7恒位0，其余几位为ASCII码值。</p>
+<p>人们可以通过键盘输入和显示器显示不同的字符，但在计算机中，所有信息都是用二进制代码表示的。n位二进制代码能表示2^n个不同的字符，这些字符的不同的组合九克表示不同的信息。为使计算机使用的数据能共享和传递，必须对字符进行统一的编码。ASCII码和扩充的ASCII码中，吧二进制位最高位为0的数字都称为基本的ASCII码，其范围是0~127；把二进制最高位为1的数字都成为拓展的ASCII码，其范围是128~255。</p>
+<h1 id="内码和外码">内码和外码</h1>
+<h2 id="内码">内码</h2>
+<p>对于输入计算机的文本文件，机器是存储其相应的字符的ASCII码（用一个ASCII码存储一个字符需8个二进制位，即一个字节），这些可被计算机内部进行存储和运算使用的数字代码称内码。入输入字符“A&quot;,计算机将其转成内码65后存于内存。</p>
+<h2 id="外码">外码</h2>
+<p>计算机与人进行交换的自行符号称为外码，如字符”A“的外码是”A“。</p>
+<p>通常一个细纹字符栈一个字节(半角)，一个中文字符占两个字节。</p>
+<figure data-type="image" tabindex="1"><img src="https://aaron-mhx.github.io/post-images/1588167391977.png" alt="" loading="lazy"></figure>
+<h1 id="汉字信息编码">汉字信息编码</h1>
+<h2 id="汉字交换码">汉字交换码</h2>
+<p>汉字交换码是指不同的具有汉字处理功能的计算机系统之间在交换汉字信息时使用的代码标准。自国家标准GB2312-80公布以来，我国一直沿用该标准所规定的国际标准码作为统一的汉字信息交换码（GB5007-85图形字符代码）。</p>
+<p>GB2312-80标准包括了6763个汉字，按其使用频率分为一级汉字3755个和二级汉字3008个。一级汉字按拼音顺序，二级汉字按部首排序。该标准还包括标点符号、数种西文字母、图形、数码等符号682个。</p>
+<p>区位码的区码和位码均采用从01到94的十进制，国标码采用十六进制的21H到73H(数字后面加H表示其为十六进制数)。区位码和国标码的换算关系是：区码和位码分别加上十进制数32.如”国“字在表中的25行90列，其区位码为2590，国标码是397AH。</p>
+<h2 id="字形存储码">字形存储码</h2>
+<p>字形存储码是指计算机输出汉字（显示或打印）用的二进制信息，也称字模。通常，采用的数字化点阵字模。</p>
+<p>一般的点阵规模有16 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">×</span></span></span></span> 16、24 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">×</span></span></span></span> 24等，每一个点在存储器中用一个二进制位（bit）存储。在16 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">×</span></span></span></span> 16的点阵中，需8 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">×</span></span></span></span> 32bit的存储空间，每8bit为1字节，所以，需32字节的存储空间。在相同点阵中，不管其壁画繁简，每个汉字所占的字节数相等。</p>
+<p>为了节省存储空间，普遍采用字形数据压缩技术。所谓矢量汉字，是指用矢量方法将汉字点阵字模进行压缩后得到的汉字字形数字化信息。</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">非</mi><mi mathvariant="normal">原</mi><mi mathvariant="normal">创</mi><mi mathvariant="normal">！</mi></mrow><annotation encoding="application/x-tex">非原创！
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">非</span><span class="mord cjk_fallback">原</span><span class="mord cjk_fallback">创</span><span class="mord cjk_fallback">！</span></span></span></span></span></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">一、基本概念</a>
+<ul>
+<li><a href="#%E7%BC%96%E7%A0%81">编码</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE">数据</a></li>
+<li><a href="#%E6%AF%94%E7%89%B9">比特</a></li>
+<li><a href="#%E5%AD%97%E8%8A%82">字节</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E7%9A%84%E8%A1%A8%E7%A4%BA">字符的表示</a></li>
+<li><a href="#ascii%E7%BC%96%E7%A0%81">ASCII编码</a></li>
+<li><a href="#%E5%86%85%E7%A0%81%E5%92%8C%E5%A4%96%E7%A0%81">内码和外码</a>
+<ul>
+<li><a href="#%E5%86%85%E7%A0%81">内码</a></li>
+<li><a href="#%E5%A4%96%E7%A0%81">外码</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B1%89%E5%AD%97%E4%BF%A1%E6%81%AF%E7%BC%96%E7%A0%81">汉字信息编码</a>
+<ul>
+<li><a href="#%E6%B1%89%E5%AD%97%E4%BA%A4%E6%8D%A2%E7%A0%81">汉字交换码</a></li>
+<li><a href="#%E5%AD%97%E5%BD%A2%E5%AD%98%E5%82%A8%E7%A0%81">字形存储码</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://aaron-mhx.github.io/post/ying-yu-xue-xi-bi-ji-english-study-note-v522223/">
+              <h3 class="post-title">
+                英语学习笔记 English study note v5.2.22.23
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '83cd6db1b94a082c5ca3',
+    clientSecret: 'af72e52abc33e9c911655bb1773440c4cc3a72f2',
+    repo: 'Aaron-mhx.github.io',
+    owner: 'Aaron-mhx',
+    admin: ['Aaron-mhx'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://aaron-mhx.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

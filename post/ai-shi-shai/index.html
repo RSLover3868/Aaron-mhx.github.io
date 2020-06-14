@@ -1,0 +1,270 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>#算法01 埃氏筛 | Gridea</title>
+<link rel="shortcut icon" href="https://aaron-mhx.github.io/favicon.ico?v=1592122746335">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://aaron-mhx.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="#算法01 埃氏筛 | Gridea - Atom Feed" href="https://aaron-mhx.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="埃氏筛的核心思想是：假设所有的数都是质数，找到一个质数，就把他所有的倍数都当成合数
+那么，我们就需要一个指示数组，来记录数是合数还是质数。因为只有两种状态，所以我们要使用bool类型的数组，数组的下标就是要找的那个数，而真值就代表质数，假值..." />
+    <meta name="keywords" content="算法,质数筛" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://aaron-mhx.github.io">
+  <img class="avatar" src="https://aaron-mhx.github.io/images/avatar.png?v=1592122746335" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              #算法01 埃氏筛
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-03-14
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://aaron-mhx.github.io/tag/irXlWTXr6T/" class="post-tag">
+                  # 算法
+                </a>
+              
+                <a href="https://aaron-mhx.github.io/tag/sMmsAmjIdf/" class="post-tag">
+                  # 质数筛
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://aaron-mhx.github.io/post-images/ai-shi-shai.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h4 id="埃氏筛的核心思想是假设所有的数都是质数找到一个质数就把他所有的倍数都当成合数">埃氏筛的核心思想是：假设所有的数都是质数，找到一个质数，就把他所有的倍数都当成合数</h4>
+<p>那么，我们就需要一个指示数组，来记录数是合数还是质数。因为只有两种状态，所以我们要使用<strong>bool</strong>类型的数组，数组的下标就是要找的那个数，而真值就代表质数，假值则代表合数。我们先把这个数组完成。<br>
+<code>bool zs[1000000];//指示数组：是否为质数</code><br>
+接下来我们需要把他们都假设为是质数，尽管他不是char类型的数组，也可以使用memset，不过别忘了加上<code>include&lt;cstring&gt;</code>头文件<s>其实也可以用万能头文件<code>#include&lt;bits/stdc++.h&gt;</code>但有时使用它会出错</s>。再把这句补上。<br>
+<code>memset(zs,1,sizeof(zs));//赋值为“是质数”（真为质数，假为合数）</code><br>
+但是，有些数学好的童鞋已经看出来了：0、都被算成了质数！！！，我们把这句给添上。<br>
+<code>zs[0] = zs[1] = 0;</code></p>
+<h5 id="接下来到了重头戏其实也不难">接下来到了重头戏<s>其实也不难</s></h5>
+<p>我们先找到一个能不断找到质数的办法：**for循环！！！**我们的for循环要从2开始（毕竟2是最小的质数），再到我们查找的范围结束（我们假定范围是0~n）但并不是所有的都是质数，所以我们再加上一个if语句，是质数（<code>sz[i] == 1</code>)时再找他的倍数，还要用到for循环，从2开始（从0或1开始是毫无意义的，还费时间）那什么时候结束呢？A.j&lt;=n  B.i*j &lt;= n，答案是B，因为我们找的是i的倍数，也就是i*j，我们的范围是小于n的，所以i乘j一定小于或等于n。循环体作用就是把i的倍数设为合数，所以这一大段代码赶紧补上吧！</p>
+<pre><code class="language-c">for(int i = 2; i &lt;= n; i++){
+		if(zs[i]){//是质数才执行
+			for(int j = 2; i*j &lt;= n; j++){//质数的倍数都是合数 
+				zs[i*j] = 0;
+			}
+		}
+		
+	}
+</code></pre>
+<h3 id="接下来到了我们最喜欢的完整代码">接下来到了我们最喜欢的完整代码</h3>
+<p>这段代码我做成了函数的形式，并且完成了输入n，输出0~n范围内质数的个数</p>
+<h4 id="再说一点非常重要请勿抄袭">再说一点，非常重要，<strong>请勿抄袭！！！</strong></h4>
+<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;//万能头文件
+using namespace std;
+bool zs[101010];//指示数组：是否为质数
+int ass(int n){//埃氏筛 拼音
+	int sum = 0;//质数数量 
+	memset(zs,1,sizeof(zs));//赋值为“是质数”（真为质数，假为合数） 
+	zs[0] = zs[1] = 0;
+	for(int i = 2; i &lt;= n; i++){
+		if(zs[i]){
+			sum ++;
+			for(int j = 2; i*j &lt;= n; j++){//质数的倍数都是合数 
+				zs[i*j] = 0;
+			}
+		}
+		
+	}
+	return sum;
+}
+
+//******************************* 
+int main(){
+	//freopen(&quot;1.in&quot;,&quot;w&quot;,stdin);定义输入文件，这个语句执行一次后，一定要注释掉，不然你会疯的
+	//freopen(&quot;1.in&quot;,&quot;r&quot;,stdin);读取输入文件
+	//freopen(&quot;1.out&quot;,&quot;w&quot;,stdout);这些比赛时才用得着，了解一下吧
+	//**********文件**************
+	
+	int n;
+	cin &gt;&gt; n;
+	cout &lt;&lt; ass(n);
+	
+	return 0;
+} 
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%9F%83%E6%B0%8F%E7%AD%9B%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%98%AF%E5%81%87%E8%AE%BE%E6%89%80%E6%9C%89%E7%9A%84%E6%95%B0%E9%83%BD%E6%98%AF%E8%B4%A8%E6%95%B0%E6%89%BE%E5%88%B0%E4%B8%80%E4%B8%AA%E8%B4%A8%E6%95%B0%E5%B0%B1%E6%8A%8A%E4%BB%96%E6%89%80%E6%9C%89%E7%9A%84%E5%80%8D%E6%95%B0%E9%83%BD%E5%BD%93%E6%88%90%E5%90%88%E6%95%B0">埃氏筛的核心思想是：假设所有的数都是质数，找到一个质数，就把他所有的倍数都当成合数</a>
+<ul>
+<li><a href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%88%B0%E4%BA%86%E9%87%8D%E5%A4%B4%E6%88%8F%E5%85%B6%E5%AE%9E%E4%B9%9F%E4%B8%8D%E9%9A%BE">接下来到了重头戏<s>其实也不难</s></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%88%B0%E4%BA%86%E6%88%91%E4%BB%AC%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">接下来到了我们最喜欢的完整代码</a>
+<ul>
+<li><a href="#%E5%86%8D%E8%AF%B4%E4%B8%80%E7%82%B9%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81%E8%AF%B7%E5%8B%BF%E6%8A%84%E8%A2%AD">再说一点，非常重要，<strong>请勿抄袭！！！</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '83cd6db1b94a082c5ca3',
+    clientSecret: 'af72e52abc33e9c911655bb1773440c4cc3a72f2',
+    repo: 'Aaron-mhx.github.io',
+    owner: 'Aaron-mhx',
+    admin: ['Aaron-mhx'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://aaron-mhx.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

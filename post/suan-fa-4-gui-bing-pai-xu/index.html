@@ -1,0 +1,332 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>#算法4 归并排序 | Gridea</title>
+<link rel="shortcut icon" href="https://aaron-mhx.github.io/favicon.ico?v=1592122746335">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://aaron-mhx.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="#算法4 归并排序 | Gridea - Atom Feed" href="https://aaron-mhx.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="往期回顾
+上次我们讲了快速排序，它的核心是两个哨兵i和j，以及一个基准数。基准数有三种分别是两端的其中一个数，中间值和随机值。哨兵i和j分别从两端向中间遍历数，直到i找到第一个比基准值大的数，j找到第一个比基准值小的数，将它们调换后再继续，..." />
+    <meta name="keywords" content="递归,算法,排序" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://aaron-mhx.github.io">
+  <img class="avatar" src="https://aaron-mhx.github.io/images/avatar.png?v=1592122746335" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              #算法4 归并排序
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-12
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://aaron-mhx.github.io/tag/VjKDa17mbp/" class="post-tag">
+                  # 递归
+                </a>
+              
+                <a href="https://aaron-mhx.github.io/tag/irXlWTXr6T/" class="post-tag">
+                  # 算法
+                </a>
+              
+                <a href="https://aaron-mhx.github.io/tag/dfg9vYsJ_t/" class="post-tag">
+                  # 排序
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://aaron-mhx.github.io/post-images/suan-fa-4-gui-bing-pai-xu.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="往期回顾">往期回顾</h3>
+<p>上次我们讲了快速排序，它的核心是两个哨兵i和j，以及一个基准数。基准数有三种分别是两端的其中一个数，中间值和随机值。哨兵i和j分别从两端向中间遍历数，直到i找到第一个比基准值大的数，j找到第一个比基准值小的数，将它们调换后再继续，直到相遇，而相遇的位置就是基准值的位置，将基准值与相遇的值进行调换。此时整个数组也被分为了两部分，再把两部分继续执行以上步骤，直到全部有序。但是他有一个<strong>退化的风险</strong>，也就是会从O(nlogn)的算法变成O(n^2)，所以我们需要一个更稳定的算法，他就是归并排序。</p>
+<h3 id="算法思路">算法思路</h3>
+<p>a long long time ago……我们学习了把两个有序数组合并的知识归并排序也是运用了这一点，他先把一个数组拆成两半，此时就有了两种情况。<br>
+1.两边都有序，皆大欢喜，合并！<br>
+2.不是有序的，继续执行以上步骤。<br>
+拆了好久好久……<br>
+直到拆成只剩一个数的时候，这时不管运气多背都是有序的 。 <s>你要敢说一个数不是有序的试试？</s><br>
+然后再合并合并再合并……<br>
+就变成有序的啦！</p>
+<h3 id="具体实现">具体实现</h3>
+<p>我们先来完成拆分的步骤。<br>
+为了减轻工作量，当它拆到一个数的时候合并，if语句：<code>if(l&gt;=r) return ;</code>(老规矩：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>表示起始的下标，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>表示结束的下标。)然后加上一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">mid</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span></span></span></span>，也就是中间值。<code>int mid =(l+r)/2;</code>再加上分拆的语句(我是把这个函数取名  mergeSort)，代码↓；</p>
+<pre><code class="language-c++">  mergeSort(l,mid);
+  mergeSort(mid+1,r);
+</code></pre>
+<p>再加上合并的过程(合并函数待会再说)：<code>merge(l,mid,r);</code><br>
+所以分拆函数完整代码就是：</p>
+<pre><code class="language-c">void mergeSort(int l,int r){
+  if(l&gt;=r) return ; 
+  int mid =(l+r)/2;
+  //1. 左右两边有序
+  mergeSort(l,mid);
+  mergeSort(mid+1,r);
+  //O（n） 合并
+  merge(l,mid,r);
+}
+</code></pre>
+<hr>
+<hr>
+<p>接下来，我们来看看合并的函数。<br>
+首先，我们要定义三个变量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>=</mo><mi>l</mi><mi mathvariant="normal">，</mi><mi>j</mi><mo>=</mo><mi>m</mi><mi>i</mi><mi>d</mi><mi mathvariant="normal">，</mi><mi>k</mi><mo>=</mo><mi>l</mi></mrow><annotation encoding="application/x-tex">i=l，j=mid，k=l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>，他们的范围分别是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi mathvariant="normal">到</mi><mi>m</mi><mi>i</mi><mi>d</mi><mi mathvariant="normal">、</mi><mi>m</mi><mi>i</mi><mi>d</mi><mo>+</mo><mn>1</mn><mi mathvariant="normal">到</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">l到mid、mid+1到r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord cjk_fallback">到</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mord cjk_fallback">、</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord cjk_fallback">到</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>和一个辅助用的数组。</p>
+<pre><code class="language-C++">int i=l,j=mid+1,k=l;
+</code></pre>
+<p>别忘了定义全局的数组t</p>
+<pre><code class="language-C++">int t[10000000];
+</code></pre>
+<p>接着，我们在while循环里加上if语句用于判断它们的大小，谁大谁就赋值到临时用的数组中，并将i或j加1，上代码！</p>
+<pre><code class="language-c++">while(i&lt;=mid&amp;&amp;j&lt;=r){
+	if(a[i]&gt;a[j]){
+		t[k++]=a[j++];
+	}else{
+		t[k++]=a[i++];
+	}
+}
+</code></pre>
+<p>接下来还是while循环i<sub>mid，j</sub>r</p>
+<pre><code class="language-c++">while(i&lt;=mid) t[k++]=a[i++];
+while(j&lt;=r) t[k++]=a[j++];
+</code></pre>
+<p>最后再把东西“还回去”</p>
+<pre><code class="language-c++">for(int x=l;x&lt;=r;x++){
+	a[x]=t[x];
+}
+</code></pre>
+<p>至此所有的都好啦！本函数完整代码：</p>
+<pre><code class="language-c++">int a[10000000],t[10000000];
+void merge(int l,int mid,int r){
+	//l~mid
+	//mid+1 ~r 
+	int i=l,j=mid+1,k=l;
+	while(i&lt;=mid&amp;&amp;j&lt;=r){
+		if(a[i]&gt;a[j]){
+			t[k++]=a[j++];
+		}else{
+			t[k++]=a[i++];
+		}
+	}
+	while(i&lt;=mid) t[k++]=a[i++];
+	while(j&lt;=r) t[k++]=a[j++];
+	// t[l~r]  
+	for(int x=l;x&lt;=r;x++){
+		a[x]=t[x];
+	}
+	
+}
+</code></pre>
+<h3 id="完整代码">完整代码</h3>
+<h4 id="请勿抄袭">请勿抄袭</h4>
+<pre><code class="language-c++">void merge(int l,int mid,int r){
+	//l~mid
+	//mid+1 ~r 
+	int i=l,j=mid+1,k=l;
+	while(i&lt;=mid&amp;&amp;j&lt;=r){
+		if(a[i]&gt;a[j]){
+			t[k++]=a[j++];
+		}else{
+			t[k++]=a[i++];
+		}
+	}
+	while(i&lt;=mid) t[k++]=a[i++];
+	while(j&lt;=r) t[k++]=a[j++];
+	// t[l~r]  
+	for(int x=l;x&lt;=r;x++){
+		a[x]=t[x];
+	}
+	
+}
+
+void mergeSort(int l,int r){
+  if(l&gt;=r) return ; 
+  int mid =(l+r)/2;
+  //1. 左右两边有序
+  mergeSort(l,mid);
+  mergeSort(mid+1,r);
+  //O（n） 合并
+  merge(l,mid,r);
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%BE%80%E6%9C%9F%E5%9B%9E%E9%A1%BE">往期回顾</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF">算法思路</a></li>
+<li><a href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0">具体实现</a></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">完整代码</a>
+<ul>
+<li><a href="#%E8%AF%B7%E5%8B%BF%E6%8A%84%E8%A2%AD">请勿抄袭</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://aaron-mhx.github.io/post/suan-fa-3-kuai-su-pai-xu/">
+              <h3 class="post-title">
+                #算法3 快速排序
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '83cd6db1b94a082c5ca3',
+    clientSecret: 'af72e52abc33e9c911655bb1773440c4cc3a72f2',
+    repo: 'Aaron-mhx.github.io',
+    owner: 'Aaron-mhx',
+    admin: ['Aaron-mhx'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://aaron-mhx.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

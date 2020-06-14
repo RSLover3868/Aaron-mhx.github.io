@@ -1,0 +1,361 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>#题解 放苹果 | Gridea</title>
+<link rel="shortcut icon" href="https://aaron-mhx.github.io/favicon.ico?v=1592122746335">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://aaron-mhx.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="#题解 放苹果 | Gridea - Atom Feed" href="https://aaron-mhx.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="ε≡٩(๑&gt;₃&lt;)۶ 先来读题啊啊啊
+题目背景
+（poj1664）（poj1664）（poj1664）
+题目描述
+把MMM个同样的苹果放在NNN个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分发（5,1,1和1,1,5..." />
+    <meta name="keywords" content="题解,搜索,递归" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://aaron-mhx.github.io">
+  <img class="avatar" src="https://aaron-mhx.github.io/images/avatar.png?v=1592122746335" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              #题解 放苹果
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-27
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://aaron-mhx.github.io/tag/sjBtX2RqI/" class="post-tag">
+                  # 题解
+                </a>
+              
+                <a href="https://aaron-mhx.github.io/tag/-XJx5UJbiC/" class="post-tag">
+                  # 搜索
+                </a>
+              
+                <a href="https://aaron-mhx.github.io/tag/VjKDa17mbp/" class="post-tag">
+                  # 递归
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://www.luogu.com.cn/images/congratulation.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="ε٩๑3۶-先来读题啊啊啊">ε≡٩(๑&gt;₃&lt;)۶ 先来读题啊啊啊</h2>
+<h3 id="题目背景">题目背景</h3>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">（</mi><mi>p</mi><mi>o</mi><mi>j</mi><mn>1664</mn><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">（poj1664）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">（</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">1</span><span class="mord">6</span><span class="mord">6</span><span class="mord">4</span><span class="mord cjk_fallback">）</span></span></span></span></p>
+<h3 id="题目描述">题目描述</h3>
+<p>把<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>个同样的苹果放在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分发<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">（</mi><mn>5</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mi mathvariant="normal">和</mi><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>5</mn><mi mathvariant="normal">是</mi><mi mathvariant="normal">同</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">种</mi><mi mathvariant="normal">方</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">（5,1,1和1,1,5是同一种方法）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">（</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord cjk_fallback">和</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">5</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">同</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">种</span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">）</span></span></span></span></p>
+<h3 id="输入格式">输入格式</h3>
+<p>第一行是测试数据的数目<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi mathvariant="normal">（</mi><mn>0</mn><mo>&lt;</mo><mo>=</mo><mi>t</mi><mo>&lt;</mo><mo>=</mo><mn>20</mn><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">t（0 &lt;= t &lt;= 20）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">t</span><span class="mord cjk_fallback">（</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.65418em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord cjk_fallback">）</span></span></span></span>，以下每行均包括二个整数M和N，以空格分开。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi mathvariant="normal">＜</mi><mo>=</mo><mi>M</mi><mi mathvariant="normal">，</mi><mi>N</mi><mi mathvariant="normal">＜</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">1＜=M，N＜=10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord cjk_fallback">＜</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord cjk_fallback">＜</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span>。</p>
+<h3 id="输出格式">输出格式</h3>
+<p>对输入的每组数据<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>，用一行输出相应的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span>。</p>
+<h3 id="输入输出样例">输入输出样例</h3>
+<h4 id="输入-1">输入 #1</h4>
+<p>1<br>
+7 3</p>
+<h4 id="输出-1">输出 #1</h4>
+<p>8</p>
+<h4 id="输入-2">输入 #2</h4>
+<p>3<br>
+3 2<br>
+4 3<br>
+2 7</p>
+<h4 id="输出-2">输出 #2</h4>
+<p>2<br>
+4<br>
+2</p>
+<h2 id="具体实现">具体实现</h2>
+<p>这道题目要使用递归的思想，所谓递归，就是函数自己调用自己，并把问题的规模不断缩小。<br>
+别急，一步步教你！我们先假设有一个函数可以完成这道题，命名为rank，有apple和plate两个参数，分别表示有apple个苹果和plate个盘子。那改有哪些代码呢？别急先看看样例。</p>
+<ol>
+<li>7和3，苹果数大于盘子数，此时就有两种情况，第一种是不存在空盘子，也就是每个盘子里先放上一个，就变为了苹果数减盘子数个苹果放到原来的盘子里，再加上第二种，存在空盘子，也就是原来的苹果放到盘子数减一个盘子里，然后一直循环就可以了。</li>
+<li>再看2和7，盘子数大于苹果数，也就必定有空盘子，相当于把apple个苹果放到apple个盘子里，依次循环。<br>
+先把这些补上(づ｡◕ᴗᴗ◕｡)づ</li>
+</ol>
+<pre><code class="language-c">if(apple&gt;=plate){
+	// 1.用上所有盘子  2. 存在空盘子
+	return rank(apple-plate,plate) + rank(apple,plate-1);
+}else{
+	return rank(apple,apple);
+}
+</code></pre>
+<p>但是只有这些是不够的，这样函数就会陷入死循环（｀へ´），但如果加上中止条件，就不会发生这种事，那有什么中止条件呢？</p>
+<ol>
+<li>当苹果没有了或只有一个时，只有一种放法，返回1.</li>
+<li>当盘子只有一个时，只有一种放法，也返回1.</li>
+<li>当没有盘子时，放不了，返回0.<br>
+把这些写在函数的开头( • ̀ω•́ )✧</li>
+</ol>
+<pre><code class="language-c">if(apple == 1||apple==0) return 1;
+if(plate==1)return 1;
+if(plate==0) return 0; 
+</code></pre>
+<p><s>这只是准备工作</s>咳咳，函数写完了❥(ゝω・✿ฺ)<br>
+函数代码：</p>
+<pre><code class="language-c">int rank(int apple,int plate){
+	if(apple == 1||apple==0) return 1;
+	if(plate==1)return 1;
+	if(plate==0) return 0; 
+	
+	
+	if(apple&gt;=plate){
+		// 1.用上所有盘子  2. 存在空盘子
+		return rank(apple-plate,plate) + rank(apple,plate-1);
+	}else{
+		return rank(apple,apple);
+	}
+	
+}
+</code></pre>
+<h4 id="接下来就是主函数啦">接下来就是主函数啦</h4>
+<p>定义变量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>，数组<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi mathvariant="normal">，</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">a，p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">a</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault">p</span></span></span></span>，分别是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>次判断，苹果和盘子的数量。<br>
+接下来<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>o</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">for</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>循环输入，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>o</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">for</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>循环调用并输出。<br>
+代码ㄟ(≧◇≦)ㄏ</p>
+<pre><code class="language-c">int main(int argc, char** argv) {
+	int n,a[20],p[20];
+	cin &gt;&gt; n;
+	for(int i = 0; i &lt; n; i++){
+		cin&gt;&gt;a[i]&gt;&gt;p[i];
+	}
+	for(int i = 0; i &lt; n; i++){
+		cout&lt;&lt;rank(a[i],p[i])&lt;&lt;endl;
+	}
+	return 0;
+}
+</code></pre>
+<h2 id="完整代码">完整代码</h2>
+<h3 id="请勿抄袭oω-́o">请勿抄袭o(｀ω´*)o</h3>
+<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;//万能头文件 
+
+using namespace std;
+/* run this program using the console pauser or add your own getch, system(&quot;pause&quot;) or input loop */
+
+int rank(int apple,int plate){
+	if(apple == 1||apple==0) return 1;
+	if(plate==1)return 1;
+	if(plate==0) return 0; 
+	
+	
+	if(apple&gt;=plate){
+		// 1.用上所有盘子  2. 存在空盘子
+		return rank(apple-plate,plate) + rank(apple,plate-1);
+	}else{
+		return rank(apple,apple);
+	}
+	
+}
+
+int main(int argc, char** argv) {
+	int n,a[20],p[20];
+	cin &gt;&gt; n;
+	for(int i = 0; i &lt; n; i++){
+		cin&gt;&gt;a[i]&gt;&gt;p[i];
+	}
+	for(int i = 0; i &lt; n; i++){
+		cout&lt;&lt;rank(a[i],p[i])&lt;&lt;endl;
+	}
+	return 0;
+}
+</code></pre>
+<p><img src="https://www.luogu.com.cn/images/congratulation.png" alt="" loading="lazy"><br>
+<a href="https://www.luogu.com.cn/problem/P1025"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mi mathvariant="normal">各</mi><mi mathvariant="normal">位</mi><mi mathvariant="normal">神</mi><mi mathvariant="normal">犇</mi><mi mathvariant="normal">可</mi><mi mathvariant="normal">以</mi><mi mathvariant="normal">尝</mi><mi mathvariant="normal">试</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">下</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">划</mi><mi mathvariant="normal">分</mi></mstyle></mrow><annotation encoding="application/x-tex">\color{red}各位神犇可以尝试一下数的划分</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback" style="color:red;">各</span><span class="mord cjk_fallback" style="color:red;">位</span><span class="mord cjk_fallback" style="color:red;">神</span><span class="mord cjk_fallback" style="color:red;">犇</span><span class="mord cjk_fallback" style="color:red;">可</span><span class="mord cjk_fallback" style="color:red;">以</span><span class="mord cjk_fallback" style="color:red;">尝</span><span class="mord cjk_fallback" style="color:red;">试</span><span class="mord cjk_fallback" style="color:red;">一</span><span class="mord cjk_fallback" style="color:red;">下</span><span class="mord cjk_fallback" style="color:red;">数</span><span class="mord cjk_fallback" style="color:red;">的</span><span class="mord cjk_fallback" style="color:red;">划</span><span class="mord cjk_fallback" style="color:red;">分</span></span></span></span></a><br>
+<a href="https://aaron-mhx.github.io/post/ti-jie-shu-de-hua-fen/">写完别忘来看题解呦~</a></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%CE%B5%D9%A9%E0%B9%913%DB%B6-%E5%85%88%E6%9D%A5%E8%AF%BB%E9%A2%98%E5%95%8A%E5%95%8A%E5%95%8A">ε≡٩(๑&gt;₃&lt;)۶ 先来读题啊啊啊</a>
+<ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E8%83%8C%E6%99%AF">题目背景</a></li>
+<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F">输入格式</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F">输出格式</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B">输入输出样例</a>
+<ul>
+<li><a href="#%E8%BE%93%E5%85%A5-1">输入 #1</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA-1">输出 #1</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5-2">输入 #2</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA-2">输出 #2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0">具体实现</a><br>
+*
+<ul>
+<li><a href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%B0%B1%E6%98%AF%E4%B8%BB%E5%87%BD%E6%95%B0%E5%95%A6">接下来就是主函数啦</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">完整代码</a>
+<ul>
+<li><a href="#%E8%AF%B7%E5%8B%BF%E6%8A%84%E8%A2%ADo%CF%89-%CC%81o">请勿抄袭o(｀ω´*)o</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://aaron-mhx.github.io/post/suan-fa-05-di-gui/">
+              <h3 class="post-title">
+                #算法05 递归
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '83cd6db1b94a082c5ca3',
+    clientSecret: 'af72e52abc33e9c911655bb1773440c4cc3a72f2',
+    repo: 'Aaron-mhx.github.io',
+    owner: 'Aaron-mhx',
+    admin: ['Aaron-mhx'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://aaron-mhx.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

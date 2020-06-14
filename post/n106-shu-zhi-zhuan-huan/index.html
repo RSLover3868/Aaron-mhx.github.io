@@ -1,0 +1,282 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>N106 数制转换 | Gridea</title>
+<link rel="shortcut icon" href="https://aaron-mhx.github.io/favicon.ico?v=1592122746335">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://aaron-mhx.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="N106 数制转换 | Gridea - Atom Feed" href="https://aaron-mhx.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="进位计数制的基本概念
+将数字符号按顺序排列成数位，并遵照某种由低到高的进位方式计数表示数值的方法，称作为计数制。
+十进制
+十进制计数制由 0、1、2、3、4、5、6、7、8、9 共 10 个数字符号组成。相同数字符号在不同的位数上表示不同的..." />
+    <meta name="keywords" content="N knowledge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://aaron-mhx.github.io">
+  <img class="avatar" src="https://aaron-mhx.github.io/images/avatar.png?v=1592122746335" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              N106 数制转换
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-18
+              </span>
+              <span>
+                7 min read
+              </span>
+              
+                <a href="https://aaron-mhx.github.io/tag/6mP9DGMhkp/" class="post-tag">
+                  # N knowledge
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://aaron-mhx.github.io/post-images/n106-shu-zhi-zhuan-huan.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="进位计数制的基本概念">进位计数制的基本概念</h1>
+<p>将数字符号按顺序排列成数位，并遵照某种由低到高的进位方式计数表示数值的方法，称作为计数制。</p>
+<h2 id="十进制">十进制</h2>
+<p>十进制计数制由 0、1、2、3、4、5、6、7、8、9 共 10 个数字符号组成。相同数字符号在不同的位数上表示不同的数值，每个数位计满十就向高位进一，即“逢十进一”。</p>
+<h2 id="八进制">八进制</h2>
+<p>八进制计数制由 0、1、2、3、4、5、6、7 共 8 个数字符号组成。相同数字符号在不同的数位上表示不同的数值，每个数位计满八位就像高位进一，即“逢八进一”。</p>
+<h2 id="二进制">二进制</h2>
+<p>二进制计数制由 0 和 1 共两个数字符号组成。相同数字符号在不同的数位上表示不同的数值，每个数位计满二就向高位进一，即“逢二进一”。</p>
+<h2 id="其他进制">其他进制</h2>
+<p>在日常生活和工作中还会使用其他进制数。如：十二进制数、十六进制数、百进制数和千进制数等。无论哪种进制数，表示的方法都是类似的。如：十六进制数由 0、1、2、3、4、5、6、7、8、9、A、B、C、D、E 和 F 共 16 个符号组成，“逢十六进一”。不同的是，用 A、B、C、D、E 和 F 分别表示 10、11、12、13、14 和 15 六个数字符号。</p>
+<h2 id="基数与权">基数与权</h2>
+<p>某进制计数制允许选用的基本数字符号的个数称为计数。一般而言，J 进制数的计数为 J，可供选用的基本数字符号有 J 个，分别是 0 到 J-1，每个数位计满 J 就向高位进一，即“逢 J 进一”。</p>
+<p>某进制计数制中各位数字符号所表示的数值表示该数字符号值乘以一个与数字符号所处位置有关的常数，该常数称为“位权”（简称“权”）。位权的大小是以计数为底、数字符号所处的位置的序号为指数的整数次幂。</p>
+<p>十进制数允许使用是个基本数字符号，所以基数为 10，每位数字符号代表的位数的大小是以 10 为敌，数字符号所处位置的序号为指数的整数次幂。</p>
+<p>十进制的百位、十位、个位和十分位的权分别为 10<sup>2,10</sup>1,10<sup>0,10</sup>-1。故（555.5）10 可表示成（555.5）10=5<em>10<sup>2+5*10</sup>1+5</em>10<sup>0+5*10</sup>-1。J 禁止数相邻两位数相差 J 倍，若小数点向左移 n 位，则整个数值就缩小 J^n。繁殖，小数点向右移 n 位，数值就放大 J^n。</p>
+<h1 id="数制之间的转换">数制之间的转换</h1>
+<p>计算机内部使用的数字符号只有“0”和“1”两个。也就是说，计算机内部使用的是二进制数，所有的数值数据和非数值数据，都是由“0”和“1”这两个数字符号加以组合而成的，我们称之为“二进制代码”。</p>
+<p>计算机只用二进制的两个数码“0”和“1”来实现算数和逻辑运算，而人们仍然用十进制的形式向计算机中输入原始数据，并让计算机也用十进制形式显示和打印运算结果。所以，必须有一种自动转换方法，即让数据输入计算机后，将十进制转换成对应的二进制数，并在处理完毕后，再自动将二进制结果转换位十进制数。</p>
+<p>为了表达方便起见，常在数字后加一缩写字母后缀作为不同禁止的标识。各种禁止数的后缀字母分别为：</p>
+<p>B:二进制数   O：八进制数</p>
+<p>D:十进制数   H:十六进制数</p>
+<p>对于十进制数，通常不加后缀，也即十进制数后的字母 D 可省略。</p>
+<h3 id="十进制转二进制">十进制转二进制</h3>
+<p>整数转二进制</p>
+<p>整数转二进制是最常见的。核心在于除 2 取余，倒序排列，高位补零。</p>
+<figure data-type="image" tabindex="1"><img src="https://aaron-mhx.github.io/post-images/1587275925321.png" alt="图片" loading="lazy"></figure>
+<p>不断地将数字除以 2，将余数写一边，直到商为 0 时停止。下方的为二进制的高位，由高位到低位倒序排列余数，高位不够用 0 来代替。</p>
+<p>负整数转二进制</p>
+<p>先是将对应的正整数转换成二进制后，对二进制取反然后再加 1。以-10 为例。10 的二进制表达是(00001010)B,由于高位都是 0，所以可以省略，写成(1010)B ,（用 B 来表示表达的是二进制）。</p>
+<ol>
+<li>先取反。取反的意思就是 1 变成 0，0 变成 1。(00001010)B=&gt;(11110101)B</li>
+<li>加上 1。由于是二进制，所以我们逢二进一。(11110101)B =&gt;(11110110)B。</li>
+</ol>
+<p>由于小数的高位都是 1，所以我们也可以将高位省去，只保留(0110)B。不过注意和正整数进行区别。</p>
+<p>小数转二进制</p>
+<p>将小数部分乘以 2，取整数(这个整数不是 0 就是 1)，当乘以二后小数部分结果为 0 或者位数够了，这些整数就是二进制。</p>
+<p>以 0.125 为例</p>
+<p>0.125 * 2 =0.25 整数部分为 0</p>
+<p>0.25 *  2  = 0.5  整数部分为 0</p>
+<p>0.5  *  2  = 1.0  整数部分为 1，小数部分为 0，停止。</p>
+<p>二进制就为 0.001</p>
+<p>如果是带整数部分的小数进行进制转换，那么分开来处理，先将整数部分，转换成二进制，再将小数部分，转为二进制。</p>
+<p><strong>注意</strong>小数进行二进制转换是存在无法除尽的情况的，这是正常的。根据题意保留足够的位数即可。</p>
+<h3 id="二进制转十进制">二进制转十进制</h3>
+<p>使用按权相加法。</p>
+<p>高位为 0</p>
+<p>首先第一步将位数补齐，如果高位是 0 则是一个正数。将其分离位数，将分离出来的位数按从低位到高位的顺序，依次和 2 的冥相乘累加。以(1010)B 为例。</p>
+<p>分离位数：1 0 1 0  =&gt; 相乘累加 0<em>2<sup>0+1*2</sup>1+0</em>2<sup>2+1*2</sup>3=10</p>
+<p>高位为 1</p>
+<p>如果高位为 1，则说明是一个负数，那就先减 1，再进行取反，在进行转换。以(11110110)B 为例：</p>
+<p>减一：(11110101)B =&gt; 取反: (00001010)B=&gt;按权相加:0<em>2<sup>0+1*2</sup>1+0</em>2<sup>2+1*2</sup>3=10</p>
+<p>小数形式</p>
+<p>整数部分和小数部分分开计算。整数部分参考上面。小数部分则是相反。以（0.001）B 为例。</p>
+<p>按权相加：0<em>2<sup>-1+0*2</sup>-2+1</em>2^-3=0.125</p>
+<h3 id="其他进制转换">其他进制转换</h3>
+<p>整体上的方法和十进制与二进制的转换方法类似。转换成 x 进制的话使用除 x 取余，倒序排列，高位补零。二进制转换成其他进制还是采用按权相加的方法。</p>
+<h3 id="八进制与十六进制">八进制与十六进制</h3>
+<p>八进制是逢八进一。</p>
+<p>十进制转八进制的话，过程就是不断地将数字除以 8，将余数写一边，直到商为 0 时停止。下方的为二进制的高位，由高位到低位倒序排列余数，高位不够用 0 来代替。以十进制 10 转换为八进制例。</p>
+<figure data-type="image" tabindex="2"><img src="https://aaron-mhx.github.io/post-images/1587275947325.png" alt="" loading="lazy"></figure>
+<p>十六进制也是类似，需要注意的点是，十六进制的 10~15 是使用 A~F 来表示的。</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">非</mi><mi mathvariant="normal">原</mi><mi mathvariant="normal">创</mi><mi mathvariant="normal">！</mi></mrow><annotation encoding="application/x-tex">非原创！
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">非</span><span class="mord cjk_fallback">原</span><span class="mord cjk_fallback">创</span><span class="mord cjk_fallback">！</span></span></span></span></span></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E8%BF%9B%E4%BD%8D%E8%AE%A1%E6%95%B0%E5%88%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">进位计数制的基本概念</a>
+<ul>
+<li><a href="#%E5%8D%81%E8%BF%9B%E5%88%B6">十进制</a></li>
+<li><a href="#%E5%85%AB%E8%BF%9B%E5%88%B6">八进制</a></li>
+<li><a href="#%E4%BA%8C%E8%BF%9B%E5%88%B6">二进制</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6">其他进制</a></li>
+<li><a href="#%E5%9F%BA%E6%95%B0%E4%B8%8E%E6%9D%83">基数与权</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E5%88%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2">数制之间的转换</a><br>
+*
+<ul>
+<li><a href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6">十进制转二进制</a></li>
+<li><a href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8D%81%E8%BF%9B%E5%88%B6">二进制转十进制</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2">其他进制转换</a></li>
+<li><a href="#%E5%85%AB%E8%BF%9B%E5%88%B6%E4%B8%8E%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6">八进制与十六进制</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://aaron-mhx.github.io/post/n105/">
+              <h3 class="post-title">
+                N105 计算机语言
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '83cd6db1b94a082c5ca3',
+    clientSecret: 'af72e52abc33e9c911655bb1773440c4cc3a72f2',
+    repo: 'Aaron-mhx.github.io',
+    owner: 'Aaron-mhx',
+    admin: ['Aaron-mhx'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://aaron-mhx.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

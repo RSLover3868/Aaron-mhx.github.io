@@ -1,0 +1,338 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>#题解 全排列问题 | Gridea</title>
+<link rel="shortcut icon" href="https://aaron-mhx.github.io/favicon.ico?v=1592122746335">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://aaron-mhx.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="#题解 全排列问题 | Gridea - Atom Feed" href="https://aaron-mhx.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="我们先来读题啊啊啊
+题目描述
+输出自然数 1 到 n 所有不重复的排列，即 n 的全排列，要求所产生的任一数字序列中不允许出现重复的数字。
+输入格式
+一个整数 n。
+输出格式
+由 1∼n1 \sim n1∼n 组成的所有不重复的数字序列，每..." />
+    <meta name="keywords" content="题解" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://aaron-mhx.github.io">
+  <img class="avatar" src="https://aaron-mhx.github.io/images/avatar.png?v=1592122746335" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              #题解 全排列问题
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-01
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://aaron-mhx.github.io/tag/sjBtX2RqI/" class="post-tag">
+                  # 题解
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://www.luogu.com.cn/images/congratulation.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="我们先来读题啊啊啊">我们先来读题啊啊啊</h3>
+<h4 id="题目描述">题目描述</h4>
+<p>输出自然数 1 到 n 所有不重复的排列，即 n 的全排列，要求所产生的任一数字序列中不允许出现重复的数字。</p>
+<h4 id="输入格式">输入格式</h4>
+<p>一个整数 n。</p>
+<h4 id="输出格式">输出格式</h4>
+<p>由 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>∼</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 \sim n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 组成的所有不重复的数字序列，每行一个序列。</p>
+<p>每个数字保留 5 个场宽。</p>
+<h4 id="输入输出样例">输入输出样例</h4>
+<h5 id="输入-1">输入 #1</h5>
+<pre><code class="language-text">3
+</code></pre>
+<h5 id="输出-1">输出 #1</h5>
+<pre><code>1    2    3
+1    3    2
+2    1    3
+2    3    1
+3    1    2
+3    2    1
+</code></pre>
+<h4 id="说明提示">说明/提示</h4>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">1 \leq n \leq 9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span></span></span></span></p>
+<h3 id="具体实现">具体实现</h3>
+<p>要解决这题，就必须用到递归，所谓递归就是不断将问题规模缩小，直至某个答案显而易见的终点。<br>
+这一题可以利用循环和递归一起，从样例3中来分析，第一层函数确定第一个数，for循环，里面加上一个判断语句，是为了保证不重复，然后将它赋值为用过，再进行下一层循环，最后再回溯一次，第二三层循环也是同理。<br>
+当然还要加上终止条件，用过的数的数量等于要排的数量的时候，输出他们。</p>
+<p>首先，我们要有一些变量和数组，一个<code>ans[25]</code>、<code>n</code>和<code>flag[25]</code>，分别是用来记录已选数，要选的数的数量和用没用过这个数，当然还要一个参数<code>done</code>表示用过的数的数量。</p>
+<p>接下来for循环，if语句，赋值调用再回溯，代码：</p>
+<pre><code class="language-c">for(int i = 1; i &lt;= n; i++){
+	if(flag[i] == 0){
+		flag[i] = 1;
+		ans[done]=i;
+		rank(done+1);
+		flag[i] = 0;
+	}
+}
+</code></pre>
+<p>最后再将终止条件加上，此时，我们可以直接输出。</p>
+<pre><code class="language-c">if(done==n){
+	for(int i = 0; i &lt; n; i++){
+		cout &lt;&lt; setw(5) &lt;&lt; ans[i]; 
+	}
+	cout &lt;&lt; endl;
+	return;
+}
+</code></pre>
+<p>函数代码：</p>
+<pre><code class="language-c">int ans[25]={0},n;
+int flag[25] = {1};
+void rank(int done){//全排列 
+	if(done==n){
+		
+		for(int i = 0; i &lt; n; i++){
+			cout &lt;&lt; setw(5) &lt;&lt; ans[i]; 
+		}
+		cout &lt;&lt; endl;
+		return;
+	}
+	for(int i = 1; i &lt;= n; i++){
+		if(flag[i] == 0){
+			flag[i] = 1;
+			ans[done]=i;
+			rank(done+1);
+			flag[i] = 0;
+		}
+	}
+} 
+</code></pre>
+<p>再把主函数完成：</p>
+<pre><code class="language-c">int main(int argc, char** argv) {
+	cin &gt;&gt; n;
+	rank(0);
+	return 0;
+}
+</code></pre>
+<h3 id="完整代码">完整代码</h3>
+<h4 id="请勿抄袭">请勿抄袭</h4>
+<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;//万能头文件 
+using namespace std;
+int ans[25]={0},n;
+int flag[25] = {1};
+void rank(int done){//全排列 
+	if(done==n){
+		
+		for(int i = 0; i &lt; n; i++){
+			cout &lt;&lt; setw(5) &lt;&lt; ans[i]; 
+		}
+		cout &lt;&lt; endl;
+		return;
+	}
+	for(int i = 1; i &lt;= n; i++){
+		if(flag[i] == 0){
+			flag[i] = 1;
+			ans[done]=i;
+			rank(done+1);
+			flag[i] = 0;
+		}
+	}
+} 
+int main(int argc, char** argv) {
+	cin &gt;&gt; n;
+	rank(0);
+	return 0;
+}
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://www.luogu.com.cn/images/congratulation.png" alt="" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%88%91%E4%BB%AC%E5%85%88%E6%9D%A5%E8%AF%BB%E9%A2%98%E5%95%8A%E5%95%8A%E5%95%8A">我们先来读题啊啊啊</a>
+<ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F">输入格式</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F">输出格式</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B">输入输出样例</a>
+<ul>
+<li><a href="#%E8%BE%93%E5%85%A5-1">输入 #1</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA-1">输出 #1</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%B4%E6%98%8E%E6%8F%90%E7%A4%BA">说明/提示</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0">具体实现</a></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">完整代码</a>
+<ul>
+<li><a href="#%E8%AF%B7%E5%8B%BF%E6%8A%84%E8%A2%AD">请勿抄袭</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://aaron-mhx.github.io/post/ti-jie-shu-de-hua-fen/">
+              <h3 class="post-title">
+                #题解 数的划分
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '83cd6db1b94a082c5ca3',
+    clientSecret: 'af72e52abc33e9c911655bb1773440c4cc3a72f2',
+    repo: 'Aaron-mhx.github.io',
+    owner: 'Aaron-mhx',
+    admin: ['Aaron-mhx'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://aaron-mhx.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

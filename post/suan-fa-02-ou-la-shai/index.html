@@ -1,0 +1,288 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>#算法02 欧拉筛 | Gridea</title>
+<link rel="shortcut icon" href="https://aaron-mhx.github.io/favicon.ico?v=1592122746335">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://aaron-mhx.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="#算法02 欧拉筛 | Gridea - Atom Feed" href="https://aaron-mhx.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="往期回顾：
+上一次我们学习了时间复杂度为O(nloglogn)的质数筛算法埃氏筛，他是先默认所有数都是质数，然后没找到一个质数，就把范围内所有它的倍数都设为合数来进行筛选的。
+但是不知你们有没有发现它有一个漏洞，就是有的数会筛两遍，例如 6..." />
+    <meta name="keywords" content="算法,质数筛,数论,枚举" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://aaron-mhx.github.io">
+  <img class="avatar" src="https://aaron-mhx.github.io/images/avatar.png?v=1592122746335" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              #算法02 欧拉筛
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-03-31
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://aaron-mhx.github.io/tag/irXlWTXr6T/" class="post-tag">
+                  # 算法
+                </a>
+              
+                <a href="https://aaron-mhx.github.io/tag/sMmsAmjIdf/" class="post-tag">
+                  # 质数筛
+                </a>
+              
+                <a href="https://aaron-mhx.github.io/tag/ZOXETdnbKw/" class="post-tag">
+                  # 数论
+                </a>
+              
+                <a href="https://aaron-mhx.github.io/tag/5EQYlKH4Xx1/" class="post-tag">
+                  # 枚举
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://aaron-mhx.github.io/post-images/suan-fa-02-ou-la-shai.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="往期回顾">往期回顾：</h3>
+<p>上一次我们学习了时间复杂度为O(nloglogn)的质数筛算法埃氏筛，他是先默认所有数都是质数，然后没找到一个质数，就把范围内所有它的倍数都设为合数来进行筛选的。<br>
+但是不知你们有没有发现它有一个漏洞，就是<strong>有的数会筛两遍</strong>，例如 6 ，他在找到2的时候筛一次，但找到 3 的时候又筛了一次，这可不行，所以我们今天要学习欧拉筛。</p>
+<h3 id="算法思路">算法思路：</h3>
+<p>先默认所有数都是质数，然后找到一个数n后，如果n是第i个质数，就把质数表的第i项赋值为这个质数，接下来不论是质数还是合数都乘上质数表中的质数，直到质数表中的数是n的因数。</p>
+<h3 id="代码实现">代码实现</h3>
+<p>如果要把所有数都默认为质数，就需要一个指数数组<code>bool zs[100000010];</code>，真值为质数，假值为合数。接下来我们要把它用真值初始化，可以用到<code>memset(zs,1,sizeof(zs));</code>，但是千万不要漏掉头文件：<code>#include&lt;cstring&gt;</code>或万能头文件<code>#include&lt;bits/stdc++.h&gt;</code>。同样，我们需要把0，1赋值为假值，用<code>zs[0] = zs[1] = 0;</code>来实现。</p>
+<h5 id="接下来就到了重中之重">接下来就到了重中之重</h5>
+<p>下一步就和埃氏筛不一样了。for循环，从2开始，到 n 结束，每次<strong>加一</strong>然后就要实现“如果n是第i个质数，就把质数表的第i项赋值为这个质数”看到这里，我们就发现还要一个“质数表”并且不能利用循环中定义的数(因为合数也会执行)，还要加上表示质数个数的变量，就像这样：</p>
+<pre><code class="language-c">int zsb[9000010];//质数表：用于记录已找出的质数 
+int sum = 0;//找出的质数个数
+//并且要给质数表赋初始值以免出错
+memset(zsb,0,sizeof(zsb));
+</code></pre>
+<p>变量和数组都有了，接下来就是判断如果是质数，把质数表的第sum项赋值为这个质数，并把sum加一。可以写成这样：</p>
+<pre><code class="language-c">if(zs[i] == 1){
+	zsb[sum++] = i;
+}
+</code></pre>
+<p>接下来就是找倍数了。还是要用到for循环，但注意嵌套for循环要用另一个变量名。从0开始，一直找到最后一个质数表中的质数，并且找到的数i乘质数表的第j项要小于最大范围n<s>不然有些是没有意义的</s>用代码<code>for(int j = 0; j &lt; sum &amp;&amp; i*zsb[j] &lt;= n; j++)</code>来实现，再把指数数组zs中的第i*质数表的第j项赋值为零来实现。然后就要判断这次乘上的质数是不是找的数i的因数，如果是就退出循环，不是则继续乘质数表的下一个数。代码，走你┏ (゜ω゜)=☞</p>
+<pre><code class="language-c">for(int j = 0; j &lt; sum &amp;&amp; i*zsb[j] &lt;= n; j++){
+	zs[i*zsb[j]] = 0;
+	if(i % zsb[j] == 0){
+		break;
+	}
+}
+</code></pre>
+<p>最后加上一个<code>return；</code>就ok了。</p>
+<h3 id="完整代码">完整代码</h3>
+<h5 id="不要抄袭"><strong>不要抄袭！！！</strong></h5>
+<p>这是一个函数版的欧拉筛，使用的时候要在主函数内调用。<br>
+要求质数个数的话，就直接输出sum就OK了。<s>是不是很方便呢？</s></p>
+<pre><code class="language-c">bool zs[100000010];//指示数组：下标为找的数，真为质数，假为合数。
+int zsb[9000010];//质数表：用于记录已找出的质数 
+int sum = 0;//找出的质数个数
+//如果要求质数个数，直接输出sum 
+void ols(int n){//欧拉筛
+	memset(zs,1,sizeof(zs));//初始化，假设全部为真值(质数) 
+	memset(zsb,0,sizeof(zsb));//初始化，防止出错 
+	zs[0] = zs[1] = 0;//初始化，0和1不是质数也不是合数 
+	for(int i = 2; i &lt;= n; i++){
+		if(zs[i] == 1){//如果有质数 
+			zsb[sum++] = i;//质数表的第sum项赋值为这个质数 
+		}
+		for(int j = 0; j &lt; sum &amp;&amp; i*zsb[j] &lt;= n; j++){//找倍数 
+			zs[i*zsb[j]] = 0;//乘上质数表的第i项 
+			if(i % zsb[j] == 0){//如果是质数表第i项的倍数 
+				break;//退出 
+			}
+		}
+	}
+	return; 
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%BE%80%E6%9C%9F%E5%9B%9E%E9%A1%BE">往期回顾：</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF">算法思路：</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现</a><br>
+*
+<ul>
+<li><a href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%B0%B1%E5%88%B0%E4%BA%86%E9%87%8D%E4%B8%AD%E4%B9%8B%E9%87%8D">接下来就到了重中之重</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">完整代码</a><br>
+*
+<ul>
+<li><a href="#%E4%B8%8D%E8%A6%81%E6%8A%84%E8%A2%AD"><strong>不要抄袭！！！</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://aaron-mhx.github.io/post/ge-de-ba-he-cai-xiang-sheng-ji-ban/">
+              <h3 class="post-title">
+                #题解 哥德巴赫猜想（升级版）
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '83cd6db1b94a082c5ca3',
+    clientSecret: 'af72e52abc33e9c911655bb1773440c4cc3a72f2',
+    repo: 'Aaron-mhx.github.io',
+    owner: 'Aaron-mhx',
+    admin: ['Aaron-mhx'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://aaron-mhx.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

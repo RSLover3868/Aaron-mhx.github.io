@@ -1,0 +1,329 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>#算法3 快速排序 | Gridea</title>
+<link rel="shortcut icon" href="https://aaron-mhx.github.io/favicon.ico?v=1592122746335">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://aaron-mhx.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="#算法3 快速排序 | Gridea - Atom Feed" href="https://aaron-mhx.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="上期回顾
+上一次我们学了质数筛中的欧拉筛，它的核心思路是先默认所有数都是质数，然后找到一个数n后，如果n是第i个质数，就把质数表的第i项赋值为这个质数，接下来不论是质数还是合数都乘上质数表中的质数，直到质数表中的数是n的因数。至此质数筛的学..." />
+    <meta name="keywords" content="递归,算法,排序" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://aaron-mhx.github.io">
+  <img class="avatar" src="https://aaron-mhx.github.io/images/avatar.png?v=1592122746335" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              #算法3 快速排序
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-11
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://aaron-mhx.github.io/tag/VjKDa17mbp/" class="post-tag">
+                  # 递归
+                </a>
+              
+                <a href="https://aaron-mhx.github.io/tag/irXlWTXr6T/" class="post-tag">
+                  # 算法
+                </a>
+              
+                <a href="https://aaron-mhx.github.io/tag/dfg9vYsJ_t/" class="post-tag">
+                  # 排序
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://aaron-mhx.github.io/post-images/suan-fa-3-kuai-su-pai-xu.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="上期回顾">上期回顾</h3>
+<p>上一次我们学了质数筛中的欧拉筛，它的核心思路是先默认所有数都是质数，然后找到一个数n后，如果n是第i个质数，就把质数表的第i项赋值为这个质数，接下来不论是质数还是合数都乘上质数表中的质数，直到质数表中的数是n的因数。至此质数筛的学习就告一段落了，今天我们学习快速排序。</p>
+<h3 id="算法思路">算法思路</h3>
+<p>快速排序的实现需要两个哨兵i和j，以及一个基准数。基准数有三种分别是两端的其中一个数，中间值和随机值。哨兵i和j分别从两端向中间遍历数，直到i找到第一个比基准值大的数，j找到第一个比基准值小的数，将它们调换后再继续，直到相遇，而相遇的位置就是基准值的位置，将基准值与相遇的值进行调换。此时整个数组也被分为了两部分，再把两部分继续执行以上步骤，直到全部有序。<br>
+**提示：**基准数如果采取两端的话有可能会退化！所以我们使用中间值做基准值的方法示范。<sub>文末有彩蛋哦。</sub></p>
+<h3 id="具体实现">具体实现</h3>
+<p>首先，我们先定义三个变量i，j和基准数，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>表示起始的下标，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>表示结束的下标。代码↓</p>
+<pre><code class="language-c++">int i=l,j=r,jzz=a[(l+r)/2];
+</code></pre>
+<p>接下来我们要执行“哨兵i和j分别从两端向中间遍历数，直到i找到第一个比基准值大的数，j找到第一个比基准值小的数，将它们调换后再继续，直到相遇”的部分。“再继续，直到相遇”部分可以用<code>while(i&lt;=j){}</code>表示，中间“哨兵i和j分别从两端向中间遍历数”也是<code>while</code>循环，但此时，i和j是分开的，所以就分成两段。<br>
+i：</p>
+<pre><code class="language-c++">while(a[i] &lt; jzz){
+	i++;
+}
+</code></pre>
+<hr>
+<p>j:</p>
+<pre><code class="language-c++">while(a[j] &gt; jzz){//找到第一个比基准值小的数 
+	j--;
+}
+</code></pre>
+<p>此时i和j都找到了各自要找的数，进行一次交换。</p>
+<pre><code class="language-c++">if(i&lt;=j){//交换 
+	swap(a[i],a[j]);
+	i++;
+	j--;
+}
+</code></pre>
+<p>随后又会进入外面的循环，继续遍历，最终还会又一次交换。<br>
+最后，我们要将以上步骤再重复一遍，不需要复制粘贴，用<strong>递归</strong>的方法，但别忘了在开头加上一个if语句。</p>
+<pre><code class="language-c++">if(l &gt;= r){//全部归位后退出 
+	return;
+}
+</code></pre>
+<p>开头的if语句↑<br>
+结尾的递归↓</p>
+<pre><code class="language-c++">if(l &lt; j) kspx(l,j);
+if(i &lt; r) kspx(i,r);
+</code></pre>
+<p>此时，再把最后的函数封装完成</p>
+<pre><code class="language-c++">void kspx(int l,int r){
+    //此处省略一大堆代码
+}
+</code></pre>
+<p>函数名k(kuai快)s(su速)p(pai排)x(xu序)是不是很好记呢？</p>
+<h3 id="完整代码">完整代码</h3>
+<h5 id="请勿抄袭">请勿抄袭！</h5>
+<pre><code class="language-c++">int a[100000000];
+void kspx(int l,int r){//快速排序
+	if(l &gt;= r){//全部归位后退出 
+		return;
+	}
+	
+	int i=l,j=r,jzz=a[(l+r)/2];
+	//哨兵1，哨兵2，基准值（中间值）
+	while(i&lt;=j){
+		while(a[i] &lt; jzz){//找到第一个比基准值大的数 
+			i++;
+		}
+		while(a[j] &gt; jzz){//找到第一个比基准值小的数 
+			j--;
+		}
+		if(i&lt;=j){//交换 
+			swap(a[i],a[j]);
+			i++;
+			j--;
+		}
+	}
+	 
+	if(l &lt; j) kspx(l,j);
+	if(i &lt; r) kspx(i,r);
+	//递归 
+}
+</code></pre>
+<p>彩蛋：用最左侧做基准值：</p>
+<pre><code class="language-c++">void qSort(int left,int right){
+	//
+	
+	if(left&gt;=right) return ;
+	
+	int i=left,j=right,tmp; 
+	tmp=a[left];
+	
+	while(i!=j){
+		//1. 从右向左 寻找比基准值小
+//		while(a[j]&gt;=tmp){j--;
+//		} 
+		while(a[j]&gt;=tmp){j--;}
+		//2. 从左往右，寻找比基准值大的数
+		while(a[i]&lt;=tmp){i++;}
+		
+		if(i&lt;j)
+			swap(a[i],a[j]);
+		
+	}
+	//使基准值归位 
+	a[left]=a[i];
+	a[i]=tmp;
+	// 递归排序两侧
+	//
+	qSort(left,i-1);
+	
+	qSort(i+1,right); 
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E4%B8%8A%E6%9C%9F%E5%9B%9E%E9%A1%BE">上期回顾</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF">算法思路</a></li>
+<li><a href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0">具体实现</a></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">完整代码</a><br>
+*
+<ul>
+<li><a href="#%E8%AF%B7%E5%8B%BF%E6%8A%84%E8%A2%AD">请勿抄袭！</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://aaron-mhx.github.io/post/suan-fa-02-ou-la-shai/">
+              <h3 class="post-title">
+                #算法02 欧拉筛
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '83cd6db1b94a082c5ca3',
+    clientSecret: 'af72e52abc33e9c911655bb1773440c4cc3a72f2',
+    repo: 'Aaron-mhx.github.io',
+    owner: 'Aaron-mhx',
+    admin: ['Aaron-mhx'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://aaron-mhx.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

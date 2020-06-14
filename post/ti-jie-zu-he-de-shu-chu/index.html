@@ -1,0 +1,342 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>#题解 组合的输出 | Gridea</title>
+<link rel="shortcut icon" href="https://aaron-mhx.github.io/favicon.ico?v=1592122746335">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://aaron-mhx.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="#题解 组合的输出 | Gridea - Atom Feed" href="https://aaron-mhx.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="读题！ヾ(*ΦωΦ)ツ
+题目描述
+排列与组合是常用的数学方法，其中组合就是从nnn个元素中抽出rrr个元素(不分顺序且r≤nr \le nr≤n)，我们可以简单地将nnn个元素理解为自然数1,2,…,n1,2,…,n1,2,…,n从中任取r..." />
+    <meta name="keywords" content="题解" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://aaron-mhx.github.io">
+  <img class="avatar" src="https://aaron-mhx.github.io/images/avatar.png?v=1592122746335" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              #题解 组合的输出
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-01
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://aaron-mhx.github.io/tag/sjBtX2RqI/" class="post-tag">
+                  # 题解
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://www.luogu.com.cn/images/congratulation.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="读题ヾφωφツ">读题！ヾ(*ΦωΦ)ツ</h3>
+<h4 id="题目描述">题目描述</h4>
+<p>排列与组合是常用的数学方法，其中组合就是从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个元素中抽出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>个元素(不分顺序且<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">r \le n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>)，我们可以简单地将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个元素理解为自然数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1,2,…,n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span></span></span></span>从中任取r个数。</p>
+<p>现要求你输出所有组合。</p>
+<p>例如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>=</mo><mn>5</mn><mo separator="true">,</mo><mi>r</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n=5,r=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>，所有组合为：</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>123</mn><mo separator="true">,</mo><mn>124</mn><mo separator="true">,</mo><mn>125</mn><mo separator="true">,</mo><mn>134</mn><mo separator="true">,</mo><mn>135</mn><mo separator="true">,</mo><mn>145</mn><mo separator="true">,</mo><mn>234</mn><mo separator="true">,</mo><mn>235</mn><mo separator="true">,</mo><mn>245</mn><mo separator="true">,</mo><mn>345</mn></mrow><annotation encoding="application/x-tex">12 3 , 1 2 4 , 1 2 5 , 1 3 4 ,1 3 5 , 1 4 5 , 2 3 4 , 2 3 5 , 2 4 5 , 3 4 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">3</span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">3</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">4</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mord">3</span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mord">3</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mord">4</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">3</span><span class="mord">4</span><span class="mord">5</span></span></span></span></p>
+<h4 id="输入格式">输入格式</h4>
+<p>一行两个自然数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo separator="true">,</mo><mi>r</mi><mo>(</mo><mn>1</mn><mo>&lt;</mo><mi>n</mi><mo>&lt;</mo><mn>21</mn><mo separator="true">,</mo><mn>0</mn><mo>≤</mo><mi>r</mi><mo>≤</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">n,r(1&lt;n&lt;21,0 \le r \le n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<h4 id="输出格式">输出格式</h4>
+<p>所有的组合，每一个组合占一行且其中的元素按由小到大的顺序排列，每个元素占三个字符的位置，所有的组合也按字典顺序。<br>
+<strong>注意哦!输出时，每个数字需要3个场宽</strong></p>
+<h4 id="输入输出样例">输入输出样例</h4>
+<h5 id="输入-1复制">输入 #1复制</h5>
+<p>5 3</p>
+<h5 id="输出-1复制">输出 #1复制</h5>
+<p>1  2  3<br>
+1  2  4<br>
+1  2  5<br>
+1  3  4<br>
+1  3  5<br>
+1  4  5<br>
+2  3  4<br>
+2  3  5<br>
+2  4  5<br>
+3  4  5</p>
+<h3 id="具体实现">具体实现</h3>
+<p>首先我们要了解一道题目<a href="https://aaron-mhx.github.io/post/ti-jie-quan-pai-lie-wen-ti/">全拍列问题</a>（简称上道题），打开题目乍一看没区别，就只有保留的场宽不一样，但再仔细一看就会发现，上道题是n选n，他这却是n选r，也好实现，多加一个变量就可以；上道题123、132、213、231、312、321是不同方法，此题却是一种方法，这就是我们最大的拦路虎。<br>
+别急，按照套路来，分析样例！！！<br>
+emm……看上去没啥规律，但我们找到了他们的共同点：后一个数总比前一个数大，前一个数不就是ans的第done项吗，比他大不就是加一吗？思路有了，开始码代码吧！<br>
+这是上一题的代码：</p>
+<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;//万能头文件 
+using namespace std;
+int ans[25]={0},n;
+int flag[25] = {1};
+void rank(int done){//全排列 
+	if(done==n){
+		
+		for(int i = 0; i &lt; n; i++){
+			cout &lt;&lt; setw(5) &lt;&lt; ans[i]; 
+		}
+		cout &lt;&lt; endl;
+		return;
+	}
+	for(int i = 1; i &lt;= n; i++){
+		if(flag[i] == 0){
+			flag[i] = 1;
+			ans[done]=i;
+			rank(done+1);
+			flag[i] = 0;
+		}
+	}
+} 
+int main(int argc, char** argv) {
+	cin &gt;&gt; n;
+	rank(0);
+	return 0;
+}
+</code></pre>
+<p>首先最上面的变量数组，去掉flag（后面的比前面的大当然不会重复咯），加上r：</p>
+<pre><code class="language-c">int ans[100]={0},r,n;
+</code></pre>
+<p>接下来把终止条件改一下，改成<code>r==done</code>,<code>setw(5)</code>,代码：</p>
+<pre><code class="language-c">if(r==done){
+	for(int i = 1; i &lt;= r; i++){
+		cout &lt;&lt; setw(3) &lt;&lt; ans[i]; 
+	}
+	cout &lt;&lt; endl;
+	return ;
+}
+</code></pre>
+<p>最后，再把for循环i的值更改一下，if语句和flag赋值去掉。</p>
+<pre><code class="language-c">for(int i = ans[done] + 1; i &lt;= n; i++){
+		ans[done+1] = i; 
+		rank(done+1);
+}
+</code></pre>
+<p>函数搞定！<br>
+再把主函数改一下：</p>
+<pre><code class="language-c">int main(int argc, char** argv) {
+	cin &gt;&gt; n &gt;&gt; r;
+	rank(0);
+	return 0;
+}
+</code></pre>
+<h3 id="完整代码">完整代码</h3>
+<h4 id="请勿抄袭">请勿抄袭！</h4>
+<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;//万能头文件 
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;   
+#include &lt;math.h&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+/* run this program using the console pauser or add your own getch, system(&quot;pause&quot;) or input loop */
+int ans[100]={0},r,n;
+void rank(int done){//全排列 
+	if(r==done){
+		for(int i = 1; i &lt;= r; i++){
+			cout &lt;&lt; setw(3) &lt;&lt; ans[i]; 
+		}
+		cout &lt;&lt; endl;
+		return ;
+	}
+	for(int i = ans[done] + 1; i &lt;= n; i++){
+			ans[done+1] = i; 
+			rank(done+1);
+	}
+} 
+int main(int argc, char** argv) {
+	cin &gt;&gt; n &gt;&gt; r;
+	rank(0);
+	return 0;
+}
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://www.luogu.com.cn/images/congratulation.png" alt="你通过了此题——恭喜！" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E8%AF%BB%E9%A2%98%E3%83%BE%CF%86%CF%89%CF%86%E3%83%84">读题！ヾ(*ΦωΦ)ツ</a>
+<ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F">输入格式</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F">输出格式</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B">输入输出样例</a>
+<ul>
+<li><a href="#%E8%BE%93%E5%85%A5-1%E5%A4%8D%E5%88%B6">输入 #1复制</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA-1%E5%A4%8D%E5%88%B6">输出 #1复制</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0">具体实现</a></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">完整代码</a>
+<ul>
+<li><a href="#%E8%AF%B7%E5%8B%BF%E6%8A%84%E8%A2%AD">请勿抄袭！</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://aaron-mhx.github.io/post/ti-jie-quan-pai-lie-wen-ti/">
+              <h3 class="post-title">
+                #题解 全排列问题
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '83cd6db1b94a082c5ca3',
+    clientSecret: 'af72e52abc33e9c911655bb1773440c4cc3a72f2',
+    repo: 'Aaron-mhx.github.io',
+    owner: 'Aaron-mhx',
+    admin: ['Aaron-mhx'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://aaron-mhx.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

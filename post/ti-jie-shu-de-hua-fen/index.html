@@ -1,0 +1,316 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>#题解 数的划分 | Gridea</title>
+<link rel="shortcut icon" href="https://aaron-mhx.github.io/favicon.ico?v=1592122746335">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://aaron-mhx.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="#题解 数的划分 | Gridea - Atom Feed" href="https://aaron-mhx.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="我们先来读题
+题目描述
+将整数nnn分成kkk份，且每份不能为空，任意两个方案不相同(不考虑顺序)。
+例如：n=7，k=3n=7，k=3n=7，k=3，下面三种分法被认为是相同的。
+1,1,5;1,1,5;1,1,5;
+1,5,1;1,5,..." />
+    <meta name="keywords" content="题解" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://aaron-mhx.github.io">
+  <img class="avatar" src="https://aaron-mhx.github.io/images/avatar.png?v=1592122746335" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              #题解 数的划分
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-30
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://aaron-mhx.github.io/tag/sjBtX2RqI/" class="post-tag">
+                  # 题解
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="我们先来读题">我们先来读题</h2>
+<h3 id="题目描述">题目描述</h3>
+<p>将整数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>分成<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>份，且每份不能为空，任意两个方案不相同(不考虑顺序)。</p>
+<p>例如：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>=</mo><mn>7</mn><mi mathvariant="normal">，</mi><mi>k</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n=7，k=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">7</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>，下面三种分法被认为是相同的。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>5</mn><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">1,1,5;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">5</span><span class="mpunct">;</span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>5</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">1,5,1;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">;</span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>1.</mn></mrow><annotation encoding="application/x-tex">5,1,1.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">.</span></span></span></span></p>
+<p>问有多少种不同的分法。</p>
+<h3 id="输入格式">输入格式</h3>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo separator="true">,</mo><mi>k</mi><mo>(</mo><mn>6</mn><mo>&lt;</mo><mi>n</mi><mo>≤</mo><mn>200</mn><mi mathvariant="normal">，</mi><mn>2</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mn>6</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">n,k (6&lt;n\le200，2 \le k \le 6)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mopen">(</span><span class="mord">6</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mord cjk_fallback">，</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83041em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">6</span><span class="mclose">)</span></span></span></span></p>
+<h3 id="输出格式">输出格式</h3>
+<p>11个整数，即不同的分法。</p>
+<h3 id="输入输出样例">输入输出样例</h3>
+<h4 id="输入-1">输入 #1</h4>
+<p>7 3</p>
+<h4 id="输出-1">输出 #1</h4>
+<p>4</p>
+<h3 id="说明提示">说明/提示</h3>
+<h4 id="四种分法为">四种分法为：</h4>
+<p>1,1,5;<br>
+1,2,4;<br>
+1,3,3;<br>
+2,2,3.</p>
+<h2 id="具体实现">具体实现</h2>
+<p>如果看过<a href="https://aaron-mhx.github.io/post/ti-jie-fang-ping-guo/">题解：放苹果</a>的看完题大概就联想到了放苹果，只不过是把数放到份数里面，也就对应了苹果和盘子，但是在放苹果中是允许出现空盘子的，而这里不能有空的，那怎么解决呢？</p>
+<p>样例①：</p>
+<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;//万能头文件 
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;   
+#include &lt;math.h&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+/* run this program using the console pauser or add your own getch, system(&quot;pause&quot;) or input loop */
+
+int rank(int apple,int plate){
+	if(apple == 1||apple==0) return 1;
+	if(plate==1)return 1;
+	if(plate==0) return 0; 
+	
+	
+	if(apple&gt;=plate){
+		// 1.用上所有盘子  2. 存在空盘子×
+		return rank(apple-plate,plate) ;//更改在这儿，他把存在空盘子的选项删了。
+	}else{
+		return rank(apple,apple);
+	}
+	
+}
+
+int main(int argc, char** argv) {
+	int a,p;
+	cin&gt;&gt;a&gt;&gt;p;
+	cout&lt;&lt;rank(a,p);
+	return 0;
+}
+</code></pre>
+<p>大家看到了吗？看上去没毛病，但仔细一想，递归就是把问题规模缩小，第一次要是每个盘子里都放上了呢，接下来还是可以这样的，别急，我们来看正解<s>说出来别不信这是正解</s></p>
+<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;//万能头文件 
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;   
+#include &lt;math.h&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+/* run this program using the console pauser or add your own getch, system(&quot;pause&quot;) or input loop */
+
+int rank(int apple,int plate){
+	if(apple == 1||apple==0) return 1;
+	if(plate==1)return 1;
+	if(plate==0) return 0; 
+	
+	
+	if(apple&gt;=plate){
+		// 1.用上所有盘子  2. 存在空盘子
+		return rank(apple-plate,plate) + rank(apple,plate-1);
+	}else{
+		return rank(apple,apple);
+	}
+	
+}
+//函数貌似没改噫
+
+int main(int argc, char** argv) {
+	int a,p;
+	cin&gt;&gt;a&gt;&gt;p;
+	cout&lt;&lt;rank(a-p,p);//好像在这
+	return 0;
+}
+</code></pre>
+<p>正解的改法就是在第一次的时候让每个盘子先放上一个，苹果数变为苹果数减盘子数，搞定！<br>
+<img src="https://www.luogu.com.cn/images/congratulation.png" alt="" loading="lazy"></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%88%91%E4%BB%AC%E5%85%88%E6%9D%A5%E8%AF%BB%E9%A2%98">我们先来读题</a>
+<ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F">输入格式</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F">输出格式</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B">输入输出样例</a>
+<ul>
+<li><a href="#%E8%BE%93%E5%85%A5-1">输入 #1</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA-1">输出 #1</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%B4%E6%98%8E%E6%8F%90%E7%A4%BA">说明/提示</a>
+<ul>
+<li><a href="#%E5%9B%9B%E7%A7%8D%E5%88%86%E6%B3%95%E4%B8%BA">四种分法为：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0">具体实现</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://aaron-mhx.github.io/post/n107-xin-xi-bian-ma-biao-shi/">
+              <h3 class="post-title">
+                N107 信息编码表示
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '83cd6db1b94a082c5ca3',
+    clientSecret: 'af72e52abc33e9c911655bb1773440c4cc3a72f2',
+    repo: 'Aaron-mhx.github.io',
+    owner: 'Aaron-mhx',
+    admin: ['Aaron-mhx'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://aaron-mhx.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
