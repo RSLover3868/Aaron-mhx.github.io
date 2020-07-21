@@ -2161,12 +2161,6 @@ body {
     }.bg-color {
       background-color: #fffffffe;
     }
-    .gemini .blog-header, .gemini .sidebar-wrapper, .gemini .article-wrapper, .gemini .post, .gemini .page, .gemini .section, .gemini .section-box, .gemini .sidebar-box, .gemini .friends-section {
-      border-radius: 1px;
-    }
-    .pisces .blog-header, .pisces .sidebar-wrapper, .pisces .article-wrapper, .pisces .section, .pisces .sidebar-box, .pisces .friends-section {
-      border-radius: 1px;
-    }
     .site-meta {
       background: #000 !important;
     }
@@ -2191,9 +2185,7 @@ body {
     }
     .mist .site-title i {
       background: #FFFFFFfe;
-    }.bg-img img {
-        filter: blur(是px)
-      }.box-shadow-wrapper {
+    }.box-shadow-wrapper {
       box-shadow: none !important;
     }body {
       cursor: url('/media/curs/default_normal.cur'), default;
@@ -2202,9 +2194,9 @@ body {
     }input, textarea, code {
       cursor: url('/media/curs/default_texto.cur'), text !important;
     }code > span.copy-code {
-      cursor: url('/media/curs/default_normal.cur'), text !important;
+      cursor: url('/media/curs/default_texto.cur'), text !important;
     }.post img {
-      cursor: url('/media/curs/default_link.cur'), zoom-in !important;
+      cursor: url('/media/curs/default_zoomout.cur'), zoom-in !important;
     }.post img {
-      cursor: url('/media/curs/default_link.cur'), zoom-out !important;
+      cursor: url('/media/curs/default_zoomout.cur'), zoom-out !important;
     }
