@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://aaron-mhx.github.io</id>
     <title>Gridea</title>
-    <updated>2020-07-30T13:56:38.356Z</updated>
+    <updated>2020-08-03T13:18:48.511Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://aaron-mhx.github.io"/>
     <link rel="self" href="https://aaron-mhx.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://aaron-mhx.github.io/images/avatar.png</logo>
     <icon>https://aaron-mhx.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[备战第十九届古诗文阅读大赛]]></title>
+        <id>https://aaron-mhx.github.io/post/bei-zhan-di-shi-jiu-jie-gu-shi-wen-yue-du-da-sai/</id>
+        <link href="https://aaron-mhx.github.io/post/bei-zhan-di-shi-jiu-jie-gu-shi-wen-yue-du-da-sai/">
+        </link>
+        <updated>2020-08-03T11:52:46.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[6S1英语语法笔记]]></title>
         <id>https://aaron-mhx.github.io/post/6s-ying-yu-yu-fa-bi-ji/</id>
@@ -142,12 +149,5 @@
         <link href="https://aaron-mhx.github.io/post/n103-zhong-yang-chu-li-qi-cpu/">
         </link>
         <updated>2020-04-18T12:08:17.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[N102 计算机系统的基本结构]]></title>
-        <id>https://aaron-mhx.github.io/post/n102-ji-suan-ji-xi-tong-de-ji-ben-jie-gou/</id>
-        <link href="https://aaron-mhx.github.io/post/n102-ji-suan-ji-xi-tong-de-ji-ben-jie-gou/">
-        </link>
-        <updated>2020-04-18T12:04:04.000Z</updated>
     </entry>
 </feed>
