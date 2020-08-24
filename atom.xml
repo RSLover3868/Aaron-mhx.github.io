@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://aaron-mhx.github.io</id>
     <title>Gridea</title>
-    <updated>2020-08-24T06:40:13.207Z</updated>
+    <updated>2020-08-24T08:46:40.967Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://aaron-mhx.github.io"/>
     <link rel="self" href="https://aaron-mhx.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://aaron-mhx.github.io/images/avatar.png</logo>
     <icon>https://aaron-mhx.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[备战第十九届古诗词阅读大赛-鉴赏篇]]></title>
+        <id>https://aaron-mhx.github.io/post/bei-zhan-di-shi-jiu-jie-gu-shi-ci-yue-du-da-sai-jian-shang-pian/</id>
+        <link href="https://aaron-mhx.github.io/post/bei-zhan-di-shi-jiu-jie-gu-shi-ci-yue-du-da-sai-jian-shang-pian/">
+        </link>
+        <updated>2020-08-24T02:14:57.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[备战第十九届古诗文阅读大赛-阅读篇]]></title>
         <id>https://aaron-mhx.github.io/post/bei-zhan-di-shi-jiu-jie-gu-shi-wen-yue-du-da-sai/</id>
@@ -142,12 +149,5 @@
         <link href="https://aaron-mhx.github.io/post/n105/">
         </link>
         <updated>2020-04-18T12:17:41.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[N104 计算机软件系统]]></title>
-        <id>https://aaron-mhx.github.io/post/n104-ji-suan-ji-ruan-jian-xi-tong/</id>
-        <link href="https://aaron-mhx.github.io/post/n104-ji-suan-ji-ruan-jian-xi-tong/">
-        </link>
-        <updated>2020-04-18T12:15:54.000Z</updated>
     </entry>
 </feed>
