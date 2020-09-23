@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>#功能 从0开始（Dev-cpp推荐） | Gridea</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1600770449968">
+<link rel="shortcut icon" href="/favicon.ico?v=1600866412962">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -211,7 +211,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">34</span>
+        <span class="site-item-stat-count">35</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1240,6 +1240,100 @@ int main(){//主函数，计算机执行的就是主函数中的代码
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="http://blog.on-high.top/post/ti-jie-usaco13hun-he-niu-nai-mixing-milk/"" data-c="
+          &lt;h1 id=&#34;题目&#34;&gt;题目&lt;/h1&gt;
+&lt;div data-v-4b38bb56=&#34;&#34; data-v-7b37eb95=&#34;&#34; data-v-796309f8=&#34;&#34;&gt;&lt;!----&gt; &lt;h2 data-v-4b38bb56=&#34;&#34; class=&#34;lfe-h2&#34;&gt;题目描述&lt;/h2&gt; &lt;div data-v-5a58a989=&#34;&#34; data-v-4b38bb56=&#34;&#34; class=&#34;marked&#34;&gt;&lt;p&gt;由于乳制品产业利润很低，所以降低原材料（牛奶）价格就变得十分重要。帮助 Marry 乳业找到最优的牛奶采购方案。&lt;/p&gt;
+&lt;p&gt;Marry 乳业从一些奶农手中采购牛奶，并且每一位奶农为乳制品加工企业提供的价格是不同的。此外，就像每头奶牛每天只能挤出固定数量的奶，每位奶农每天能提供的牛奶数量是一定的。每天 Marry 乳业可以从奶农手中采购到小于或者等于奶农最大产量的整数数量的牛奶。&lt;/p&gt;
+&lt;p&gt;给出 Marry 乳业每天对牛奶的需求量，还有每位奶农提供的牛奶单价和产量。计算采购足够数量的牛奶所需的最小花费。&lt;/p&gt;
+&lt;p&gt;注：每天所有奶农的总产量大于 Marry 乳业的需求量。&lt;/p&gt;
+&lt;/div&gt; &lt;h2 data-v-4b38bb56=&#34;&#34; class=&#34;lfe-h2&#34;&gt;输入格式&lt;/h2&gt; &lt;div data-v-5a58a989=&#34;&#34; data-v-4b38bb56=&#34;&#34; class=&#34;marked&#34;&gt;&lt;p&gt;第一行二个整数 &lt;span&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;n,m&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.625em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，表示需要牛奶的总量，和提供牛奶的农民个数。&lt;/p&gt;
+&lt;p&gt;接下来 &lt;span&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;m&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 行，每行两个整数 &lt;span&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;p_i,a_i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.625em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.31166399999999994em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.31166399999999994em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，表示第 &lt;span&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.65952em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 个农民牛奶的单价，和农民 &lt;span&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.65952em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 一天最多能卖出的牛奶量。&lt;/p&gt;
+&lt;/div&gt; &lt;h2 data-v-4b38bb56=&#34;&#34; class=&#34;lfe-h2&#34;&gt;输出格式&lt;/h2&gt; &lt;div data-v-5a58a989=&#34;&#34; data-v-4b38bb56=&#34;&#34; class=&#34;marked&#34;&gt;&lt;p&gt;单独的一行包含单独的一个整数，表示 Marry 的牛奶制造公司拿到所需的牛奶所要的最小费用。&lt;/p&gt;
+&lt;/div&gt; &lt;!----&gt; &lt;h2 data-v-4b38bb56=&#34;&#34; class=&#34;lfe-h2&#34;&gt;输入输出样例&lt;/h2&gt; &lt;div data-v-36768c72=&#34;&#34; data-v-4b38bb56=&#34;&#34; class=&#34;sample-wrap sample&#34;&gt;&lt;div data-v-52f2d52f=&#34;&#34; data-v-36768c72=&#34;&#34; class=&#34;input&#34;&gt;&lt;strong data-v-52f2d52f=&#34;&#34;&gt;输入 #1&lt;/strong&gt; &lt;button data-v-370e72e2=&#34;&#34; data-v-52f2d52f=&#34;&#34; type=&#34;button&#34; class=&#34;copy-btn lfe-form-sz-middle&#34; style=&#34;border-color: rgb(52, 152, 219); color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0);&#34;&gt;
+    复制
+  &lt;/button&gt; &lt;pre data-v-52f2d52f=&#34;&#34;&gt;100 5
+5 20
+9 40
+3 10
+8 80
+6 30
+&lt;/pre&gt;&lt;/div&gt; &lt;div data-v-52f2d52f=&#34;&#34; data-v-36768c72=&#34;&#34; class=&#34;output&#34;&gt;&lt;strong data-v-52f2d52f=&#34;&#34;&gt;输出 #1&lt;/strong&gt; &lt;button data-v-370e72e2=&#34;&#34; data-v-52f2d52f=&#34;&#34; type=&#34;button&#34; class=&#34;copy-btn lfe-form-sz-middle&#34; style=&#34;border-color: rgb(52, 152, 219); color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0);&#34;&gt;
+    复制
+  &lt;/button&gt; &lt;pre data-v-52f2d52f=&#34;&#34;&gt;630
+&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt; &lt;h2 data-v-4b38bb56=&#34;&#34; class=&#34;lfe-h3&#34;&gt;说明/提示&lt;/h2&gt; &lt;div data-v-5a58a989=&#34;&#34; data-v-4b38bb56=&#34;&#34; class=&#34;marked&#34;&gt;&lt;p&gt;【数据范围】&lt;br&gt;
+对于 &lt;span&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mn&gt;100&lt;/mn&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;%&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;100\%&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.80556em;vertical-align:-0.05556em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;%&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 的数据：&lt;br&gt;
+&lt;span&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;≤&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;≤&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;×&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;msup&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;0 \le n,a_i \le 2 \times 10^6&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.78041em;vertical-align:-0.13597em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;≤&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.8304100000000001em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.31166399999999994em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;≤&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.72777em;vertical-align:-0.08333em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;×&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.8141079999999999em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.8141079999999999em;&#34;&gt;&lt;span style=&#34;top:-3.063em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mtight&#34;&gt;6&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，&lt;span&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;≤&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo&gt;≤&lt;/mo&gt;&lt;mn&gt;5000&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;0\le m \le 5000&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.78041em;vertical-align:-0.13597em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;≤&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.7719400000000001em;vertical-align:-0.13597em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;≤&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，&lt;span&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;≤&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;≤&lt;/mo&gt;&lt;mn&gt;1000&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;0 \le p_i \le 1000&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.78041em;vertical-align:-0.13597em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;≤&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.8304100000000001em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.31166399999999994em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;≤&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;USACO Training Section 1.3&lt;/p&gt;
+&lt;/div&gt; &lt;!----&gt;&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;这道题看到以后，第一反应是啥，用动态规划啊，但是，这道题中“每天 Marry 乳业可以从奶农手中采购到小于或者等于奶农最大产量的整数数量的牛奶。”这句话意味着可以不把每位奶农的牛奶全部买完，所以可以直接比价格，先把最便宜的买了，在慢慢买贵的，这个过程就是 &lt;strong&gt;贪心&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mstyle mathcolor=&#34;katex-red&#34;&gt;&lt;mtext mathvariant=&#34;bold-sans-serif&#34;&gt;贪心只适用于这一类题，而它最核心的作用是一种应试技巧，目的是多拿分，而不是AC。&lt;/mtext&gt;&lt;/mstyle&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;{\textbf{\textsf{\red{贪心只适用于这一类题，而它最核心的作用是一种应试技巧，目的是多拿分，而不是AC。}}}}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord text&#34;&gt;&lt;span class=&#34;mord text&#34;&gt;&lt;span class=&#34;mord textsf textbf cjk_fallback&#34; style=&#34;color:#df0030;&#34;&gt;贪心只适用于这一类题，而它最核心的作用是一种应试技巧，目的是多拿分，而不是&lt;/span&gt;&lt;span class=&#34;mord textsf textbf&#34; style=&#34;color:#df0030;&#34;&gt;AC&lt;/span&gt;&lt;span class=&#34;mord textsf textbf cjk_fallback&#34; style=&#34;color:#df0030;&#34;&gt;。&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;实际上，我的代码还是稍有些绕↓&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;//万能头文件
+using namespace std;
+typedef struct node{//结构体，其实也可以写成两个数组
+    int p;
+    int a;
+}node;
+int n,m;//牛奶总量和农民个数
+node cow[5005];//结构体。。。
+int mmin = INT_MAX,min_i,ans;//找最便宜的、最便宜的项数和最终答案
+int main(){
+    cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m;
+    for(int i = 0; i &amp;lt; m; i++){
+        cin &amp;gt;&amp;gt; cow[i].p &amp;gt;&amp;gt; cow[i].a;
+    }
+    for(int i = 0; i &amp;lt; m&amp;amp;&amp;amp;n&amp;gt;0; i++){
+        mmin = INT_MAX;//先初始化
+       for(int j = 0; j &amp;lt; m; j++){//找最小值
+           if(cow[j].p&amp;lt;mmin){
+               mmin=cow[j].p;
+               min_i=j;
+           }
+       }
+       if(n-cow[min_i].a&amp;gt;=0){//如果这个奶农的牛奶全部买完不会有超出需求的情况
+           ans+=cow[min_i].a*cow[min_i].p;//把价格加上
+           n-=cow[min_i].a;//需求减少
+        }else{//全部买完会超出需求，也就是说只需买一部分
+           ans+=(n-0)*cow[min_i].p;//加上买的一部分的价格
+           n=0;//既然买完会超出，那么现在一定不再需要了
+       }
+       cow[min_i].p=INT_MAX;//因为已经卖光所以用“哄抬物价”来排除它
+    }
+    cout &amp;lt;&amp;lt; ans;//输出
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">#题解 [USACO1.3]混合牛奶 Mixing Milk</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="http://blog.on-high.top/post/kangcheng-rules/"" data-c="
+          &lt;h1 id=&#34;一-个人卫生要求&#34;&gt;一、个人卫生要求&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;学生必须养成良好的个人卫生习惯，自觉遵守卫生公德。&lt;/li&gt;
+&lt;li&gt;学生要要勤洗手、勤剪指甲、勤洗澡、勤剪发、勤换衣服。&lt;/li&gt;
+&lt;li&gt;学生来校必须带好手巾或餐巾纸。&lt;/li&gt;
+&lt;li&gt;学生在校内外不吃不洁食物，不乱扔果皮、纸屑等杂物。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;二-值周及校园环境卫生要求&#34;&gt;二、值周及校园环境卫生要求&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;值周由各班轮流，为期一周，时间为早上7∶00—7∶30，班主任把岗位分配到人，校门执勤的学生和负责执勤的老师一起督促检查进出校门的师生和向师生问好，其余学生负责在校区公共场所和绿化带中捡拾垃圾或负责晨扫工作。&lt;/li&gt;
+&lt;li&gt;教室及校园环境卫生要求&lt;br&gt;
+(1) 每班每天三扫∶&lt;strong&gt;一扫&lt;/strong&gt; 早晨值日生清扫教室（包括黑板、桌椅、门窗、地面）及走廊地面和墙壁，由学生干部检查。&lt;strong&gt;二扫&lt;/strong&gt; 中午午餐后值日生应立即进行教师及包干区的清扫，12∶35前结束，学生干部12∶40左右开始检查。&lt;strong&gt;三扫&lt;/strong&gt; 放学后，值日生除做好室内卫生外，对包干区再进行一次清扫，行政值班进行检查。&lt;br&gt;
+(2) 学校每周一中午进行大扫除，范围包括教室和包干区（走廊），大扫除后由卫生室、学校检查。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;三-升旗仪式要求&#34;&gt;三、升旗仪式要求&lt;/h1&gt;
+&lt;p&gt;1.全体学生必须认真参加每周一早晨的升旗仪式，升旗仪式严格按照《国旗法》规定程序进行。&lt;br&gt;
+2.在出旗、升旗奏国歌时，每个学生应肃立、脱帽、行注目礼，少先队员行队礼。3、 在唱国歌时，每个学生要怀着对祖国的深厚情感，高唱国歌。4、 在听国旗下演讲时，每个学生要聚精会神地听，演讲前后要热烈鼓拿。5、 学校规定每天上午7∶45-8∶00升旗，下午4∶00降旗，凡操场上人员必须原地立正行注目礼或队礼。四、进出校门要求&lt;br&gt;
+1、学生必须准时到校，不迟到、不早退，进校后不得随意离校。迟到须向班主任说明情况。&lt;br&gt;
+2、学生每天进校必须身穿校服、佩带红领巾和校牌，进校门时要站在礼貌线上主动向老师问好。&lt;br&gt;
+3、学生迟到一定要主动向值勤同学登记，凡中途离校者，需持有班主任开具的离校单，方可离校。&lt;br&gt;
+4、每天进校必须佩带好少先队、团员标志，胸前挂戴好个人校牌。&lt;/p&gt;
+">康城学校校规</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="http://blog.on-high.top/post/dong-tai-gui-hua-dp/"" data-c="
