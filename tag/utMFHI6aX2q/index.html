@@ -11,7 +11,7 @@
  &lt;img scr=&#34;https://api.solstice23.top/one_way_calendar/&#34;&gt;">
 <meta name="theme-color" content="#000">
 <title>Gridea</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1610102162910">
+<link rel="shortcut icon" href="/favicon.ico?v=1610108452360">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -3162,7 +3162,7 @@ oo结尾只加\color{red}s
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;看完这段描述，你是不是觉得晕头转向呢，我们先从火车开始研究。&lt;br&gt;
 火车由车头（相当于头指针）、车厢（相当于节点）、连接杆（各个节点的指针域）、行李车（相当于尾指针）组成，但是链表号火车不必连续在一起，也不必事先估计好内存空间。&lt;/p&gt;
-&lt;h1 id=&#34;具体实现&#34;&gt;具体实现&lt;/h1&gt;
+&lt;h1 id=&#34;具体实现单向链表&#34;&gt;具体实现（单向链表）&lt;/h1&gt;
 &lt;p&gt;首先要定义一个结构体存储它本身的信息（数据域、data）和它的直接后继元素（下一项）的存储位置（指针域、link或 next）&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;typedef struct node{
     int data;
@@ -3235,6 +3235,10 @@ int main(){
 	return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;具体实现双向链表&#34;&gt;具体实现（双向链表）&lt;/h1&gt;
+&lt;p&gt;单向链表只有一个指针&lt;code&gt;next&lt;/code&gt;表示下一项，而开头的那道题中，有可能在元素（同学）前面（左边）插入元素（同学），所以需要使用双向链表。&lt;br&gt;
+实现也非常简单：在结构体&lt;code&gt;node&lt;/code&gt;里加上一个指针，在插入时，也将指向前一项的指针（后文用&lt;code&gt;pre&lt;/code&gt;代替）改变赋值即可。&lt;/p&gt;
 ">#数据结构 链表之单向链表</a>
       </div>
       
